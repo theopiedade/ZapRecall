@@ -4,7 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import styled from 'styled-components';
 import FlashCards from './FlashCards';
-
+import Logo from './Logo';
+import StatusBar from './StatusBar';
 
 
 export default function App() {
@@ -12,22 +13,17 @@ export default function App() {
     <>
     <ContainerPrincipal>
 
-      <ContainerLogo>
-      <img src="../assets/logo.png" alt="logo"/>
-      <h1> ZapRecall </h1>
-      </ContainerLogo>
+    <Logo/>
       
     <FlashCards/>
 
-    </ContainerPrincipal>   
-        <ContainerStatus>
-        0/4 CONCLUÍDOS
-        </ContainerStatus>
+    </ContainerPrincipal>
+    
+    <StatusBar/>
+
     </>
   );
 }
-
-
 
 
 const ContainerPrincipal = styled.div`
@@ -36,32 +32,6 @@ const ContainerPrincipal = styled.div`
   background-color: #FB6B6B;
 `;
 
-const ContainerLogo = styled.div`
-  display: flex;
-  justify-content: center;
-
-  img { 
-    margin-top: 42px;
-    width: 52px;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-  }
-  h1 {
-  margin-top: 42px;
-  margin-left: 20px;
-  font-family: 'Righteous';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 45px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: -0.012em;
-  color: #FFFFFF;
-  }
-`;
 
 const ContainerCards = styled.div` 
   margin-top: 59px;
@@ -169,24 +139,7 @@ const FlashCardOpenTurnAround = styled.div`
     margin-bottom: 6px;
 `;
 
-const ContainerStatus = styled.div` 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  bottom: 0;
-  width: 375px;
-  height: 70px;
-  background: #FFFFFF;
-  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
-  
-  font-family: 'Recursive';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  color: #333333;
-`;
+
 
 
 function App2() {

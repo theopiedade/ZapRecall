@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export default function Card({indice}) {
     return(
        <FlashCard key={indice}>
-       <h1> Pergunta {indice} </h1>
+       <h1> Pergunta {indice + 1} </h1>
         <img src="../assets/seta_play.png"/>
        </FlashCard> 
 

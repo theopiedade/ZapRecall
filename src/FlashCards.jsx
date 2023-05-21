@@ -16,17 +16,24 @@ const cards = [
 export default function FlashCards(){
     return (
         <ContainerCards>
-            {cards.map((card, indice) => ( <Card indice={indice}/>) )}
+            {cards.map((card, indice) => ( <Card indice={indice} />) )}
         </ContainerCards>
+
     );
 }
 
 
 const ContainerCards = styled.div` 
-  margin-top: 59px;
+  margin-top: 36px;
+  height: 520px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  overscroll-behavior-y: contain;
   overflow: hidden;
+
+  webkit-scrollbar {
+    display: none; 
+  }
 `;
