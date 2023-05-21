@@ -23,7 +23,7 @@ body {
   flex-direction: row;
 }
 
-.containerLogoTxt {
+.containerLogo h1 {
   margin-top: 42px;
   margin-left: 20px;
   font-family: 'Righteous';

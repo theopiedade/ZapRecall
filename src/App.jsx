@@ -2,25 +2,226 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
-const cards = [
-	{ question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript" },
-	{ question: "O React é __", answer: "Uma biblioteca JavaScript para construção de interfaces" },
-	{ question: "Componentes devem iniciar com __", answer: "Letra maiúscula" },
-	{ question: "Podemos colocar __ dentro do JSX", answer: "expressões" },
-	{ question: "O ReactDOM nos ajuda __", answer: "Interagindo com a DOM para colocar componentes React na mesma" },
-	{ question: "Usamos o npm para __", answer: "Gerenciar os pacotes necessários e suas dependências" },
-	{ question: "Usamos props para __", answer: "Passar diferentes informações para componentes" },
-	{ question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
-]
+import styled from 'styled-components';
+import FlashCards from './FlashCards';
 
 
-function App() {
+
+export default function App() {
+  return (
+    <>
+    <ContainerPrincipal>
+
+      <ContainerLogo>
+      <img src="../assets/logo.png" alt="logo"/>
+      <h1> ZapRecall </h1>
+      </ContainerLogo>
+      
+    <FlashCards/>
+
+    </ContainerPrincipal>   
+        <ContainerStatus>
+        0/4 CONCLUÍDOS
+        </ContainerStatus>
+    </>
+  );
+}
+
+
+
+
+const ContainerPrincipal = styled.div`
+  width: 375px;
+  height: 667px;
+  background-color: #FB6B6B;
+`;
+
+const ContainerLogo = styled.div`
+  display: flex;
+  justify-content: center;
+
+  img { 
+    margin-top: 42px;
+    width: 52px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+  }
+  h1 {
+  margin-top: 42px;
+  margin-left: 20px;
+  font-family: 'Righteous';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 45px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.012em;
+  color: #FFFFFF;
+  }
+`;
+
+const ContainerCards = styled.div` 
+  margin-top: 59px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const FlashCard = styled.div` 
+  margin-bottom: 25px;
+  width: 300px;
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#FFFFFF;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+
+  h1 {
+    margin-left: 15px;
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+  }
+
+  h2 {
+    margin-left: 15px;
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration-line: line-through;
+    color: #FF922E;
+  }
+
+  h3 {
+    margin-left: 15px;
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration-line: line-through;
+    color: #2FBE34;
+  }
+
+  h4 {
+    margin-left: 15px;
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration-line: line-through;
+    color: #FF3030;
+  }
+  img {
+    width: 20px;
+    height: 23px;
+    margin-right: 22px;
+  }
+`;  
+
+const FlashCardOpen = styled.div` 
+  width: 299px;
+  height: 131px;
+  background: #FFFFD5;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  h1 {
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #333333;
+    display:flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 18px;
+    margin-left: 15px;
+  }
+`;
+
+const FlashCardOpenTurnAround = styled.div` 
+  display: flex; 
+  justify-content: flex-end;
+  align-items: center;
+
+  img {
+    width: 30px;
+    height: 20px;
+    margin-right: 15px;
+    margin-bottom: 6px;
+`;
+
+const ContainerStatus = styled.div` 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  width: 375px;
+  height: 70px;
+  background: #FFFFFF;
+  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+  
+  font-family: 'Recursive';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #333333;
+`;
+
+
+function App2() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <h1> Codigo vem abaixo</h1>
+      <div class="container">
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
+}
+
+
+function App3() {
+  return (
+    <>
       <div class="containerPrincipal">
         <div class="containerLogo"> 
           <img src="../assets/logo.png"/>
@@ -63,37 +264,4 @@ function App() {
     </>
   )
 }
-
-export default App
-
-
-function App2() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div class="container">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
 
