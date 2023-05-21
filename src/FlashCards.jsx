@@ -30,7 +30,7 @@ const ContainerCards = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: auto;
   overflow: hidden;
 
   webkit-scrollbar {
