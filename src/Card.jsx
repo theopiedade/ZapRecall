@@ -2,19 +2,40 @@ import { useState } from "react";
 import styled from 'styled-components';
 
 
+const images = [
+    "../assets/logo.png",
+    "../assets/seta_play.png",
+    "../assets/seta_virar.png",
+    "../assets/icone_erro.png",
+    "../assets/icone_quase.png",
+    "../assets/icone_certo.png"
+]
+
+const colors = [
+    "#333333",
+    "#333333",
+    "#FF3030",
+    "#FF922E",
+    "#2FBE34"
+]
+
+
 export default function Card({num, card, cardstatus, setcardstatus}) {
     const [txt, settxt] = useState('Pergunta '+(num+1));
     const [status, setstatus] = useState(0);
-    const [cardscomplet, setcardscomplete] = useState(0);
+    const [img, setimg] = useState(images[1]);
+    const [color, setcolor] = useState(colors[0]);
+    const [cardscomplete, setcardscomplete] = useState(1);
 
 
   //cardStatus 0 = not answer | 1 - Open Question Card | 2 - Answer Open with buttons | 3 = answer almost ok | 4 = answer ok | 5 = answer not ok
     
     function clickCard (i, s) {
-        console.log("Entrou clickCard s="+s);
+        console.log("Entrou clickCard color="+color);
         if (s == 0) { 
             settxt(card.question);
             setstatus(1);
+            setimg(images[2]);
         }
         if (s == 1) { 
             settxt(card.answer);
@@ -29,6 +50,9 @@ export default function Card({num, card, cardstatus, setcardstatus}) {
     function clickButton (i,s,option) {
         settxt('Pergunta '+(i+1));
         setstatus(option);
+        setimg(images[option]);
+        setcolor(option);
+        console.log("Entrou clickButton option="+option+" color="+color);
     }
     
     if (status == 0) {
@@ -36,7 +60,7 @@ export default function Card({num, card, cardstatus, setcardstatus}) {
         return(
         <FlashCard onClick={() => clickCard(num, status)}>
             <h1> {txt} </h1>
-            <img src="../assets/seta_play.png"/>
+            <img src={img}/>
         </FlashCard>
         );  
     }
@@ -46,7 +70,7 @@ export default function Card({num, card, cardstatus, setcardstatus}) {
         <FlashCardOpen>
             <h1> {txt} </h1>
             <FlashCardOpenTurnAround onClick={() => clickCard(num, status)}>
-            <img src="../assets/seta_virar.png"/>
+            <img src={img}/>
             </FlashCardOpenTurnAround>
 
         </FlashCardOpen>
@@ -66,32 +90,12 @@ export default function Card({num, card, cardstatus, setcardstatus}) {
         );
     }
 
-    if (status == 3) {
+    if (status > 2) {
 
         return(        
-           <FlashCard>
-                <h2> {txt} </h2>
-                <img src="../assets/icone_erro.png"/>
-            </FlashCard>
-        );  
-    }
-
-    if (status == 4) {
-
-        return(        
-           <FlashCard>
-                <h3> {txt} </h3>
-                <img src="../assets/icone_quase.png"/>
-            </FlashCard>
-        );  
-    }
-
-    if (status == 5) {
-
-        return(        
-           <FlashCard>
-                <h4> {txt} </h4>
-                <img src="../assets/icone_certo.png"/>
+           <FlashCard final={true} cor={color} >
+                <h1> {txt} </h1>
+                <img src={img}/>
             </FlashCard>
         );  
     }
@@ -118,40 +122,8 @@ const FlashCard = styled.div`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #333333;
-  }
-
-  h2 {
-    margin-left: 15px;
-    font-family: 'Recursive';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    text-decoration-line: line-through;
-    color: #FF3030;
-  }
-
-  h3 {
-    margin-left: 15px;
-    font-family: 'Recursive';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    text-decoration-line: line-through;
-    color: #FF922E;
-  }
-
-  h4 {
-    margin-left: 15px;
-    font-family: 'Recursive';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    text-decoration-line: line-through;
-    color: #2FBE34;
+    text-decoration-line: ${ (props) => props.final ? 'line-through' : 'none'};
+    color: ${ (props) => props.final ? props.cor : '#333333'};
   }
   img {
     width: 20px;

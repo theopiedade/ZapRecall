@@ -28,7 +28,6 @@ export default function FlashCards() {
 
 const ContainerCards = styled.div` 
   margin-top: 15px;
-  height: 600px;
   display: flex;
   justify-content: center;
   flex-direction: column;
