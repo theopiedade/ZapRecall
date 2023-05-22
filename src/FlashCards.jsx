@@ -22,7 +22,6 @@ export default function FlashCards() {
         <ContainerCards>
             {cards.map((card, i) => ( <Card num={i} card={card} cardstatus={cardstatus[i]} setcardstatus={setcardstatus} />) )}
         </ContainerCards>
-
     );
 }
 
@@ -37,7 +36,7 @@ const ContainerCards = styled.div`
   overscroll-behavior-y: auto;
   overflow: auto;
 
-  webkit-scrollbar {
+  ::webkit-scrollbar {
     display: none; 
   }
 `;

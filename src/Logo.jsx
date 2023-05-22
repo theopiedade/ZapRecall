@@ -7,7 +7,7 @@ export default function Logo ({stage}) {
         <ContainerLogo>
             <img src="../assets/logo.png" alt="logo"/>
             <h1> ZapRecall </h1>
-      </ContainerLogo>
+        </ContainerLogo>
     );
 }
 
