@@ -5,10 +5,10 @@ import styled from 'styled-components';
 export default function Card({num, card, cardstatus, setcardstatus}) {
     const [txt, settxt] = useState('Pergunta '+(num+1));
     const [status, setstatus] = useState(0);
+    const [cardscomplet, setcardscomplete] = useState(0);
 
 
-    //console.log("card.question ="+card.question);
-    console.log("cardstatus ="+cardstatus);
+  //cardStatus 0 = not answer | 1 - Open Question Card | 2 - Answer Open with buttons | 3 = answer almost ok | 4 = answer ok | 5 = answer not ok
     
     function clickCard (i, s) {
         console.log("Entrou clickCard s="+s);
@@ -25,20 +25,23 @@ export default function Card({num, card, cardstatus, setcardstatus}) {
             setstatus(s+1);
         }
     }
+
+    function clickButton (i,s,option) {
+        settxt('Pergunta '+(i+1));
+        setstatus(option);
+    }
     
     if (status == 0) {
-        console.log("txt ="+txt+" status ="+status);
+
         return(
         <FlashCard onClick={() => clickCard(num, status)}>
             <h1> {txt} </h1>
             <img src="../assets/seta_play.png"/>
-
-        </FlashCard> 
-
+        </FlashCard>
         );  
     }
     if (status == 1) {
-        console.log("txt ="+txt+" status ="+status);
+
         return(
         <FlashCardOpen>
             <h1> {txt} </h1>
@@ -50,22 +53,52 @@ export default function Card({num, card, cardstatus, setcardstatus}) {
         );
     }
     if (status == 2) {
-        console.log("txt ="+txt+" status ="+status);
+
         return(
             <FlashCardOpen>
             <h1> {txt} </h1>
               <FlashCardOpenButtons>
-                <B1>Não lembrei</B1>
-                <B2>Quase não lembrei</B2>
-                <B3>Zap</B3>
+                <B1 onClick={() => clickButton(num, status, 3)}>Não lembrei</B1>
+                <B2 onClick={() => clickButton(num, status, 4)}>Quase não lembrei</B2>
+                <B3 onClick={() => clickButton(num, status, 5)}>Zap</B3>
               </FlashCardOpenButtons>
             </FlashCardOpen>
         );
     }
 
+    if (status == 3) {
+
+        return(        
+           <FlashCard>
+                <h2> {txt} </h2>
+                <img src="../assets/icone_erro.png"/>
+            </FlashCard>
+        );  
+    }
+
+    if (status == 4) {
+
+        return(        
+           <FlashCard>
+                <h3> {txt} </h3>
+                <img src="../assets/icone_quase.png"/>
+            </FlashCard>
+        );  
+    }
+
+    if (status == 5) {
+
+        return(        
+           <FlashCard>
+                <h4> {txt} </h4>
+                <img src="../assets/icone_certo.png"/>
+            </FlashCard>
+        );  
+    }
+
 }
 
-  //cardStatus 0 = not answer | 1 - Open Question Card | 2 - Answer Open with buttons | 3 = answer almost ok | 4 = answer ok | 5 = answer not ok
+  //cardStatus 0 = not answer | 1 - Open Question Card | 2 - Answer Open with buttons | 3 = answer not ok | 4 = answer almost ok | 5 = answer ok
 
 const FlashCard = styled.div` 
   margin-bottom: 25px;
@@ -96,7 +129,7 @@ const FlashCard = styled.div`
     font-size: 16px;
     line-height: 19px;
     text-decoration-line: line-through;
-    color: #FF922E;
+    color: #FF3030;
   }
 
   h3 {
@@ -107,7 +140,7 @@ const FlashCard = styled.div`
     font-size: 16px;
     line-height: 19px;
     text-decoration-line: line-through;
-    color: #2FBE34;
+    color: #FF922E;
   }
 
   h4 {
@@ -118,7 +151,7 @@ const FlashCard = styled.div`
     font-size: 16px;
     line-height: 19px;
     text-decoration-line: line-through;
-    color: #FF3030;
+    color: #2FBE34;
   }
   img {
     width: 20px;
@@ -150,6 +183,7 @@ const FlashCardOpen = styled.div`
     align-items: flex-start;
     margin-top: 18px;
     margin-left: 15px;
+    margin-right: 10px;
   }
 `;
 
@@ -209,3 +243,4 @@ const B3 = styled.div`
     height: 37.17px;
     color: #FFFFFF;
 `;
+

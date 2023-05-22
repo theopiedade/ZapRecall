@@ -7,6 +7,8 @@ export default function StatusBar({props}) {
 
     if (props > count) setcount(props);
 
+    console.log("StatusBar acionado");
+
     return (
         <ContainerStatus>
             {count}/8 CONCLUÍDOS

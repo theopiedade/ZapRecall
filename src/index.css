@@ -54,7 +54,7 @@ body {
   flex-direction: column;
   align-items: center;
   overscroll-behavior-y: auto;
-  overflow:scroll;
+  overflow:hidden;
 }
 
 .ContainerCard::webkit-scrollbar {
