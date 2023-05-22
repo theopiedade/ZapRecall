@@ -21,13 +21,13 @@ const colors = [
 ]
 
 
-export default function Card({num, card, cardstatus, setcardstatus}) {
+export default function Card({num, card, cardstatus, setcardstatus, setcount, count}) {
     const [txt, settxt] = useState('Pergunta '+(num+1));
     const [status, setstatus] = useState(0);
     const [img, setimg] = useState(images[1]);
     const [color, setcolor] = useState(colors[0]);
-    const [cardscomplete, setcardscomplete] = useState(1);
-
+    
+    console.log
 
   //cardStatus 0 = not answer | 1 - Open Question Card | 2 - Answer Open with buttons | 3 = answer almost ok | 4 = answer ok | 5 = answer not ok
     
@@ -54,6 +54,8 @@ export default function Card({num, card, cardstatus, setcardstatus}) {
         setimg(images[option]);
         setcolor(colors[option]);
         console.log("Entrou clickButton option="+option+" color="+color);
+        const novoCount = count+1;
+        setcount(novoCount);
     }
     
     if (status == 0) {

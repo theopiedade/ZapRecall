@@ -6,17 +6,20 @@ import StatusBar from './StatusBar';
 
 
 export default function App() {
+
+  const [count, setcount] = useState(0);
+
   return (
     <>
     <ContainerPrincipal>
 
     <Logo/>
       
-    <FlashCards/>
+    <FlashCards count={count} setcount={setcount} />
 
     </ContainerPrincipal>
     
-    <StatusBar/>
+    <StatusBar count={count} setcount={setcount}/>
 
     </>
   );

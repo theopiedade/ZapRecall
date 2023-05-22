@@ -1,11 +1,7 @@
 import { useState } from "react";
 import styled from 'styled-components';
 
-export default function StatusBar({props}) {
-
-    const [count, setcount] = useState(0);
-
-    if (props > count) setcount(props);
+export default function StatusBar({count, setcount }) {
 
     console.log("StatusBar acionado");
 
