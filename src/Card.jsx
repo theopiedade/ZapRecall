@@ -21,7 +21,7 @@ const colors = [
 ]
 
 
-export default function Card({num, card, cardstatus, setcardstatus, setcount, count}) {
+export default function Card({num, card, cardstatus, setcardstatus, setcount, count, sethistory, history, setcorrects, corrects, hello}) {
     const [txt, settxt] = useState('Pergunta '+(num+1));
     const [status, setstatus] = useState(0);
     const [img, setimg] = useState(images[1]);
@@ -29,7 +29,7 @@ export default function Card({num, card, cardstatus, setcardstatus, setcount, co
     
     console.log
 
-  //cardStatus 0 = not answer | 1 - Open Question Card | 2 - Answer Open with buttons | 3 = answer almost ok | 4 = answer ok | 5 = answer not ok
+  //cardStatus 0 = not answer | 1 - Open Question Card | 2 - Answer Open with buttons | 3 = answer not ok | 4 = answer almost ok | 5 = answer ok
     
     function clickCard (i, s) {
         console.log("Entrou clickCard color="+color);
@@ -49,6 +49,11 @@ export default function Card({num, card, cardstatus, setcardstatus, setcount, co
     }
 
     function clickButton (i,s,option) {
+        if (option == 4 || option == 5) {
+            const novoCorrects = corrects+1;
+            console.log("Entrou corrects ="+novoCorrects)
+            setcorrects(novoCorrects)
+        }
         settxt('Pergunta '+(i+1));
         setstatus(option);
         setimg(images[option]);
@@ -56,7 +61,13 @@ export default function Card({num, card, cardstatus, setcardstatus, setcount, co
         console.log("Entrou clickButton option="+option+" color="+color);
         const novoCount = count+1;
         setcount(novoCount);
-    }
+
+        history.includes(images[option]);
+        const newArray = [...history];
+        newArray.push(images[option]);
+        console.log("Adicionando ao history: "+i);
+        sethistory(newArray);
+     }
     
     if (status == 0) {
 

@@ -8,6 +8,8 @@ import StatusBar from './StatusBar';
 export default function App() {
 
   const [count, setcount] = useState(0);
+  const [history, sethistory] = useState(['']);
+  const [corrects, setcorrects] = useState(0);
 
   return (
     <>
@@ -15,11 +17,11 @@ export default function App() {
 
     <Logo/>
       
-    <FlashCards count={count} setcount={setcount} />
+    <FlashCards count={count} setcount={setcount} history={history} sethistory={sethistory} corrects={corrects} setcorrects={setcorrects} />
 
     </ContainerPrincipal>
     
-    <StatusBar count={count} setcount={setcount}/>
+    <StatusBar count={count} setcount={setcount} history={history} sethistory={sethistory} corrects={corrects} setcorrects={setcorrects} />
 
     </>
   );

@@ -13,7 +13,7 @@ const cards = [
   { question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
 ]
 
-export default function FlashCards({ count, setcount }) {
+export default function FlashCards({ count, setcount, history, sethistory, corrects, setcorrects }) {
 
   //cardStatus 0 = not answer | 1 = answer almost ok | 2 = answer ok | 3 = answer not ok
   const [cardstatus, setcardstatus] = useState(['0', '0', '0', '0', '0', '0', '0', '0']); 
@@ -26,7 +26,12 @@ export default function FlashCards({ count, setcount }) {
             cardstatus={cardstatus[i]} 
             setcardstatus={setcardstatus} 
             setcount={setcount} 
-            count={count} 
+            count={count}
+            sethistory={sethistory}
+            history={history}
+            setcorrects={setcorrects}
+            corrects={corrects}
+            hello={card}
              />) )}
         </ContainerCards>
     );
