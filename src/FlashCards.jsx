@@ -13,10 +13,14 @@ const cards = [
   { question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
 ]
 
-export default function FlashCards(){
+export default function FlashCards() {
+
+  //cardStatus 0 = not answer | 1 = answer almost ok | 2 = answer ok | 3 = answer not ok
+  const [cardstatus, setcardstatus] = useState(['0', '0', '0', '0', '0', '0', '0', '0']); 
+
     return (
         <ContainerCards>
-            {cards.map((card, indice) => ( <Card indice={indice} />) )}
+            {cards.map((card, i) => ( <Card num={i} card={card} cardstatus={cardstatus[i]} setcardstatus={setcardstatus} />) )}
         </ContainerCards>
 
     );
@@ -24,14 +28,14 @@ export default function FlashCards(){
 
 
 const ContainerCards = styled.div` 
-  margin-top: 36px;
-  height: 520px;
+  margin-top: 15px;
+  height: 600px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   overscroll-behavior-y: auto;
-  overflow: hidden;
+  overflow: auto;
 
   webkit-scrollbar {
     display: none; 

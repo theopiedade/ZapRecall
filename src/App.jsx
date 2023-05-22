@@ -1,7 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 import styled from 'styled-components';
 import FlashCards from './FlashCards';
 import Logo from './Logo';
@@ -28,116 +25,9 @@ export default function App() {
 
 const ContainerPrincipal = styled.div`
   width: 375px;
-  height: 667px;
   background-color: #FB6B6B;
 `;
 
-
-const ContainerCards = styled.div` 
-  margin-top: 59px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const FlashCard = styled.div` 
-  margin-bottom: 25px;
-  width: 300px;
-  height: 65px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color:#FFFFFF;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-
-  h1 {
-    margin-left: 15px;
-    font-family: 'Recursive';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    color: #333333;
-  }
-
-  h2 {
-    margin-left: 15px;
-    font-family: 'Recursive';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    text-decoration-line: line-through;
-    color: #FF922E;
-  }
-
-  h3 {
-    margin-left: 15px;
-    font-family: 'Recursive';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    text-decoration-line: line-through;
-    color: #2FBE34;
-  }
-
-  h4 {
-    margin-left: 15px;
-    font-family: 'Recursive';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    text-decoration-line: line-through;
-    color: #FF3030;
-  }
-  img {
-    width: 20px;
-    height: 23px;
-    margin-right: 22px;
-  }
-`;  
-
-const FlashCardOpen = styled.div` 
-  width: 299px;
-  height: 131px;
-  background: #FFFFD5;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 25px;
-
-  h1 {
-    font-family: 'Recursive';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    color: #333333;
-    display:flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: 18px;
-    margin-left: 15px;
-  }
-`;
-
-const FlashCardOpenTurnAround = styled.div` 
-  display: flex; 
-  justify-content: flex-end;
-  align-items: center;
-
-  img {
-    width: 30px;
-    height: 20px;
-    margin-right: 15px;
-    margin-bottom: 6px;
-`;
 
 
 

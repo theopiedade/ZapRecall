@@ -1,10 +1,15 @@
 import { useState } from "react";
 import styled from 'styled-components';
 
-export default function StatusBar() {
+export default function StatusBar({props}) {
+
+    const [count, setcount] = useState(0);
+
+    if (props > count) setcount(props);
+
     return (
         <ContainerStatus>
-            0/8 CONCLUÍDOS
+            {count}/8 CONCLUÍDOS
         </ContainerStatus>
     );
 
