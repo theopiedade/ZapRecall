@@ -14,6 +14,7 @@ const images = [
 const colors = [
     "#333333",
     "#333333",
+    "#333333",
     "#FF3030",
     "#FF922E",
     "#2FBE34"
@@ -51,7 +52,7 @@ export default function Card({num, card, cardstatus, setcardstatus}) {
         settxt('Pergunta '+(i+1));
         setstatus(option);
         setimg(images[option]);
-        setcolor(option);
+        setcolor(colors[option]);
         console.log("Entrou clickButton option="+option+" color="+color);
     }
     
